@@ -1,0 +1,93 @@
+
+.container{
+    margin-top: 100px;
+}
+
+
+.product-item .image{
+    padding: 20px;
+}
+
+.image img{
+    display: block;
+    margin: 0 auto;
+    max-width: 250px;
+    max-height: 400px;
+    height: auto;
+}
+
+.image img:hover {
+    opacity: .7;
+}
+
+.card-text:hover{
+    color: red;
+}
+
+.discount{
+    display: inline-block;
+    position: absolute;
+    z-index: 1;
+    background-color: #f84147;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    top: 10px;
+    left: 8px;
+    height: 30px;
+    padding-left: 8px;
+    padding-right: 8px;
+    line-height: 30px;
+}
+
+.price{
+    position: relative;
+    margin-top: 20px;
+    display: flex;
+}
+
+
+.product-price{
+    font-size: 1.3em;
+}
+
+.product-discount-price{
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: red;
+}
+
+.no-products{
+	position: absolute;
+	left: 40%;
+	top: 40%;
+}
+
+.info{
+    display: none;
+}
+
+.info_text{
+    display: none;
+}
+
+.card:hover .info{
+    top: 95%;
+    display: block;
+    position: absolute;
+    height: auto;
+    padding: 20px 20px 0;
+    box-sizing: border-box;
+    z-index: 2;
+    background: white;
+    box-shadow: 8px 8px 15px 0 rgba(1, 1, 1, .2), -4px -4px 15px 0 rgba(1, 1, 1, .2);
+}
+
+.card:hover .info_text, .info:hover .info_text{
+    font-size: .9em;
+    display: block;
+    margin-bottom: 0;
+    position: relative;
+}

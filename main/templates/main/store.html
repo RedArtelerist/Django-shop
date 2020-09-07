@@ -1,0 +1,64 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block css_link %}
+    <link rel="stylesheet" href="{% static 'css/store.css' %}">
+
+{% endblock%}
+
+{% block content %}
+
+    <div class="container">
+        {% if products %}
+              <div class="row">
+                  {% for product in products %}
+                      <div class="col-md-4 product-item">
+                          <div class="card mb-4 shadow-sm">
+                              <div class="image">
+                                  <a href="{% url 'product' product.id %}">
+                                      <img class="thumbnail" alt="{{product.name}}" title="{{product.name}}" src="{{product.imageURL}}">
+                                  </a>
+                              </div>
+                              <div class="card-body">
+                                  <a href="{% url 'product' product.id %}" style="text-decoration: none; color: black">
+                                      <p class="card-text"><strong>{{product.name}}</strong></p>
+                                  </a>
+                                  <hr>
+                                  <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to cart</button>
+                                  <a class="btn btn-outline-success" href="{% url 'product' product.id %}">View</a>
+                                  {% if product.discount %}
+                                      <span class="discount">-{{ product.discount }}%</span>
+                                      <div class="price">
+                                          <p class="product-price" style="text-decoration: line-through; opacity: .7;">${{ product.price}}</p>
+                                          <p class="product-discount-price">${{ product.discount_price|floatformat:2 }}</p>
+                                      </div>
+                                  {% else %}
+                                     <div class="price">
+                                         <p class="product-price" style="font-weight: 700;">${{ product.price|floatformat:2}}</p>
+                                      </div>
+                                  {% endif %}
+                              </div>
+
+                              <div class="info">
+                                  <div class="info_text">
+                                      <p>
+                                          <strong>Характеристики:</strong><br>
+                                            {{product.specifications}}
+                                      </p>
+                                  </div>
+                              </div>
+
+                          </div>
+                      </div>
+                  {% endfor %}
+                </div>
+        {% else %}
+            <h1 class="no-products">No products</h1>
+        {% endif %}
+        </div>
+
+{% endblock %}
+
